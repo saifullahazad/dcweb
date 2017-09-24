@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Model\UserInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Mockery\CountValidator\Exception;
 
 class UserInfoController extends Controller
 {
@@ -67,6 +68,17 @@ class UserInfoController extends Controller
 
     public function register(Request $request){
         try {
+            $this->validate($request, [
+                "name" => "required|min:2|max:100",
+                "userEmail" => "required|unique:userInfo|min:2|max:100",
+                "userPass" => "required|min:2|max:100",
+                "contactNo" => "required|min:2|max:16",
+                "userGender" => "required",
+                "birthday" => "required",
+                "holdingType" => "required",
+                "address" => "required",
+                "userType" => "required",
+            ]);
 
             UserInfo::create($request->all());
             $userInfo = UserInfo::all()
@@ -119,6 +131,7 @@ class UserInfoController extends Controller
             "holdingType" => $request->holdingType,
             "address" => $request->address,
             "userType" => $request->userType,
+            "userPhoto" => $request->userPhoto,
         );
         UserInfo::create($data);
         return redirect("/registration")->with("msg", "Save Successful");

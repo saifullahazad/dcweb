@@ -29,6 +29,7 @@ class CreateUserInfoTable extends Migration
             $table->text('address',250);
             $table->string('holdingType',10);
             $table->string('userType',12);
+            $table->string('userPhoto');
             $table->softDeletes();
             $table->timestamps();
         });
