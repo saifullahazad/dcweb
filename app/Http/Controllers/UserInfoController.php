@@ -68,17 +68,7 @@ class UserInfoController extends Controller
 
     public function register(Request $request){
         try {
-            $this->validate($request, [
-                "name" => "required|min:2|max:100",
-                "userEmail" => "required|unique:userInfo|min:2|max:100",
-                "userPass" => "required|min:2|max:100",
-                "contactNo" => "required|min:2|max:16",
-                "userGender" => "required",
-                "birthday" => "required",
-                "holdingType" => "required",
-                "address" => "required",
-                "userType" => "required",
-            ]);
+
 
             UserInfo::create($request->all());
             $userInfo = UserInfo::all()
@@ -99,8 +89,8 @@ class UserInfoController extends Controller
 
     public function registration() {
 
-        $userinfo = DB::table("userInfo")->get();
-        return view("/registration")->with('userinfo', $userinfo);
+        $userInfo = DB::table("userInfo")->get();
+        return view("/registration")->with('userInfo', $userInfo);
     }
 
     public function create(Request $request) {

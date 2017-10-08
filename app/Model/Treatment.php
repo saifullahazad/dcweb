@@ -12,4 +12,12 @@ class Treatment extends Model
         ,'diabetes','pressure','asthma', 'currentDiseases', 'symptom', 'preDiseases', 'doctorGender','ambulance', 'requestDate', 'requestTime'
         , 'doctorCharge', 'ambulanceCharge','requestStatus', 'chargeStatus', 'doctorEmail', 'treatmentStatus', 'paymentStatus','treatmentInfo', 'userCommand'];
     public $timestamps = false;
+
+    public function Patient(){
+        return $this->hasOne('App\Model\UserInfo', 'userEmail', 'patientEmail');
+    }
+
+    public function Doctor(){
+        return $this->hasOne('App\Model\UserInfo', 'userEmail', 'doctorEmail');
+    }
 }

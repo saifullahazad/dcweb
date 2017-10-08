@@ -42,12 +42,12 @@ class TreatmentController extends Controller
             if($userInfo==null) throw new Exception('User Email, Password & Type not valid',6);
 
             if($userInfo->userType=="Patient") {
-                $myRequests = Treatment::all()
+                $myRequests = Treatment::with("Patient","Doctor")->get()
                     ->where('patientEmail', $userEmail)
                     ->where('requestStatus', 'Closed')
                     ->toArray();
             }else{
-                $myRequests = Treatment::all()
+                $myRequests = Treatment::with("Patient","Doctor")->get()
                     ->where('doctorEmail', $userEmail)
                     ->where('requestStatus', 'Closed')
                     ->toArray();
@@ -75,12 +75,12 @@ class TreatmentController extends Controller
             if($userInfo==null) throw new Exception('User Email, Password & Type not valid',6);
 
             if($userInfo->userType=="Patient") {
-                $myRequests = Treatment::all()
+                $myRequests = Treatment::with("Patient","Doctor")->get()
                     ->where('patientEmail', $userEmail)
                     ->where('requestStatus', 'Pending')
                     ->toArray();
             }else{
-                $myRequests = Treatment::all()
+                $myRequests = Treatment::with("Patient","Doctor")->get()
                     ->where('doctorEmail', $userEmail)
                     ->where('requestStatus', 'Pending')
                     ->where('chargeStatus', 'Confirmed')
