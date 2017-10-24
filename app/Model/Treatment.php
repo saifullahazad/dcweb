@@ -10,7 +10,7 @@ class Treatment extends Model
     protected $primaryKey = 'treatmentId';
     protected $fillable = ['treatmentId', 'patientEmail', 'patientRelation','patientName', 'patientGender', 'patientAge','latitude', 'longitude'
         ,'diabetes','pressure','asthma', 'currentDiseases', 'symptom', 'preDiseases', 'doctorGender','ambulance', 'requestDate', 'requestTime'
-        , 'doctorCharge', 'ambulanceCharge','requestStatus', 'chargeStatus', 'doctorEmail', 'treatmentStatus', 'paymentStatus','treatmentInfo', 'userCommand'];
+        , 'doctorCharge', 'ambulanceCharge','otherChargeTypes','otherChargeAmount','requestStatus', 'chargeStatus', 'doctorEmail', 'treatmentStatus', 'paymentStatus','treatmentInfo', 'userCommand'];
     public $timestamps = false;
 
     public function Patient(){

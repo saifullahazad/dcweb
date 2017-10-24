@@ -26,3 +26,8 @@ Route::post('/treatment/request','TreatmentController@RequestNow');
 Route::post('/treatment/mypendingrequests','TreatmentController@MyPendingRequests');
 Route::post('/treatment/myclosedrequests','TreatmentController@MyClosedRequests');
 Route::post('/treatment/update','TreatmentController@Update');
+
+Route::post('/content/contentdetail','ContentController@GetContentDetail');
+
+Route::post('/career/store','CareerController@store');
+Route::post('/career/update','CareerController@update');

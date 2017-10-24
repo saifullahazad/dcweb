@@ -120,8 +120,11 @@ class UserInfoController extends Controller
             "birthday" => $request->birthday,
             "holdingType" => $request->holdingType,
             "address" => $request->address,
-            "userType" => $request->userType,
+            "birthday" => $request->birthday,
+            "latitude" => $request->latitude,
+            "longitude" => $request->longitude,
             "userPhoto" => $request->userPhoto,
+            "nid" => $request->nid,
         );
         UserInfo::create($data);
         return redirect("/registration")->with("msg", "Save Successful");

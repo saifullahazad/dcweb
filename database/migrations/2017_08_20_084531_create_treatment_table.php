@@ -38,6 +38,8 @@ class CreateTreatmentTable extends Migration
             $table->string('requestTime',10);
             $table->integer('doctorCharge');
             $table->integer('ambulanceCharge');
+            $table->string('otherChargeTypes',250);
+            $table->integer('otherChargeAmount');
             $table->string('requestStatus',10);
             $table->string('chargeStatus',10);
             $table->string('doctorEmail',150);
