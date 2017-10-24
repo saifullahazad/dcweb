@@ -27,8 +27,8 @@ class CreateUserInfoTable extends Migration
             $table->string('birthday',12);
             $table->string('contactNo',20);
             $table->text('address',250);
-            $table->float('latitude');
-            $table->float('longitude');
+            $table->float('latitude')->default('0');
+            $table->float('longitude')->default('0');
             $table->string('holdingType',10);
             $table->string('userType',12);
             $table->string('userPhoto');
