@@ -89,6 +89,7 @@
                             </ul>
                         </li>
                     @endif
+                    <li><a href="download/Life.apk" class="icon-download" title="Download App">Download App</a></li>
                 </ul>
             </div>
         </div>
