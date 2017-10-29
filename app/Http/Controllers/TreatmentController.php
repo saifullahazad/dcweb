@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Model\Treatment;
 use App\Model\UserInfo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Mockery\CountValidator\Exception;
 
 class TreatmentController extends Controller
@@ -21,12 +22,12 @@ class TreatmentController extends Controller
 
             return response()->json($treatment);
 
-        }catch (Exception $e){
+        }catch (\Exception $e){
             $returnData = array(
                 'status' => 'error',
                 'message' => $e->getMessage()
             );
-            return Response::json($returnData, 500);
+            return response()->json(array_values($returnData));
         }
     }
 
@@ -54,12 +55,12 @@ class TreatmentController extends Controller
             }
             return response()->json(array_values($myRequests));
 
-        }catch (Exception $e){
+        }catch (\Exception $e){
             $returnData = array(
                 'status' => 'error',
                 'message' => $e->getMessage()
             );
-            return Response::json($returnData, 500);
+            return response()->json(array_values($returnData));
         }
     }
 
@@ -91,12 +92,12 @@ class TreatmentController extends Controller
             return response()->json(array_values($myRequests));
 
 
-        }catch (Exception $e){
+        }catch (\Exception $e){
             $returnData = array(
                 'status' => 'error',
                 'message' => $e->getMessage()
             );
-            return Response::json($returnData, 400);
+            return response()->json(array_values($returnData));
         }
     }
 
@@ -110,12 +111,12 @@ class TreatmentController extends Controller
             $treatment->update($request->all());
 
             return response()->json($treatment);
-        }catch (Exception $e){
+        }catch (\Exception $e){
             $returnData = array(
                 'status' => 'error',
                 'message' => $e->getMessage()
             );
-            return Response::json($returnData, 500);
+            return response()->json(array_values($returnData));
         }
 
 

@@ -25,12 +25,12 @@ class ContentController extends Controller
             return response()->json($content);
 
 
-        }catch (Exception $e){
+        }catch (\Exception $e){
             $returnData = array(
                 'status' => 'error',
                 'message' => $e->getMessage()
             );
-            return Response::json($returnData, 400);
+            return response()->json(array_values($returnData));
         }
     }
 

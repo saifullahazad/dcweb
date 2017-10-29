@@ -55,12 +55,12 @@ class CareerController extends Controller
 
             return response()->json($careerInfo);
 
-        }catch (Exception $e){
+        }catch (\Exception $e){
             $returnData = array(
                 'status' => 'error',
                 'message' => $e->getMessage()
             );
-            return Response::json($returnData, 500);
+            return response()->json(array_values($returnData));
         }
     }
 
@@ -105,12 +105,12 @@ class CareerController extends Controller
             $career->update($request->all());
 
             return response()->json($career);
-        }catch (Exception $e){
+        }catch (\Exception $e){
             $returnData = array(
                 'status' => 'error',
                 'message' => $e->getMessage()
             );
-            return Response::json($returnData, 500);
+            return response()->json(array_values($returnData));
         }
 
     }

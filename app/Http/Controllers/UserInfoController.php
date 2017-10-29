@@ -31,12 +31,12 @@ class UserInfoController extends Controller
             if($userInfo==null) throw new Exception('User Email, Password & Type not valid',6);
 
             return response()->json($userInfo);
-        } catch (Exception $e) {
+        }catch (\Exception $e){
             $returnData = array(
                 'status' => 'error',
                 'message' => $e->getMessage()
             );
-            return Response::json($returnData, 500);
+            return response()->json(array_values($returnData));
         }
     }
 
@@ -56,12 +56,12 @@ class UserInfoController extends Controller
             if($userInfo==null) throw new Exception('User not valid',6);
 
             return response()->json($userInfo);
-        }catch (Exception $e){
+        }catch (\Exception $e){
             $returnData = array(
                 'status' => 'error',
                 'message' => $e->getMessage()
             );
-            return Response::json($returnData, 500);
+            return response()->json(array_values($returnData));
         }
 
     }
@@ -77,12 +77,12 @@ class UserInfoController extends Controller
 
             return response()->json($userInfo);
 
-        }catch (Exception $e){
+        }catch (\Exception $e){
             $returnData = array(
                 'status' => 'error',
                 'message' => $e->getMessage()
             );
-            return Response::json($returnData, 500);
+            return response()->json(array_values($returnData));
         }
 
     }
