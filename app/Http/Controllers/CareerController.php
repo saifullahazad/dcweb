@@ -56,11 +56,8 @@ class CareerController extends Controller
             return response()->json($careerInfo);
 
         }catch (\Exception $e){
-            $returnData = array(
-                'status' => 'error',
-                'message' => $e->getMessage()
-            );
-            return response()->json(array_values($returnData));
+            $error=Error::getErrorAsObject($e);
+            return response()->json($error);
         }
     }
 
@@ -106,11 +103,8 @@ class CareerController extends Controller
 
             return response()->json($career);
         }catch (\Exception $e){
-            $returnData = array(
-                'status' => 'error',
-                'message' => $e->getMessage()
-            );
-            return response()->json(array_values($returnData));
+            $error=Error::getErrorAsObject($e);
+            return response()->json($error);
         }
 
     }

@@ -26,11 +26,8 @@ class ContentController extends Controller
 
 
         }catch (\Exception $e){
-            $returnData = array(
-                'status' => 'error',
-                'message' => $e->getMessage()
-            );
-            return response()->json(array_values($returnData));
+            $error=Error::getErrorAsObject($e);
+            return response()->json($error);
         }
     }
 

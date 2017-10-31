@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Error;
 use App\Model\Treatment;
 use App\Model\UserInfo;
 use Illuminate\Http\Request;
@@ -23,11 +24,8 @@ class TreatmentController extends Controller
             return response()->json($treatment);
 
         }catch (\Exception $e){
-            $returnData = array(
-                'status' => 'error',
-                'message' => $e->getMessage()
-            );
-            return response()->json(array_values($returnData));
+            $error=Error::getErrorAsObject($e);
+            return response()->json($error);
         }
     }
 
@@ -56,16 +54,14 @@ class TreatmentController extends Controller
             return response()->json(array_values($myRequests));
 
         }catch (\Exception $e){
-            $returnData = array(
-                'status' => 'error',
-                'message' => $e->getMessage()
-            );
-            return response()->json(array_values($returnData));
+            $errorArray=Error::getErrorAsArray($e);
+            return response()->json(array_values($errorArray));
         }
     }
 
     public function MyPendingRequests(Request $request){
         try {
+
             if(!$request->has('userEmail')) throw new Exception('Email is required',6);
             $userEmail = $request->input('userEmail');
 
@@ -93,11 +89,8 @@ class TreatmentController extends Controller
 
 
         }catch (\Exception $e){
-            $returnData = array(
-                'status' => 'error',
-                'message' => $e->getMessage()
-            );
-            return response()->json(array_values($returnData));
+            $errorArray=Error::getErrorAsArray($e);
+            return response()->json(array_values($errorArray));
         }
     }
 
@@ -112,11 +105,8 @@ class TreatmentController extends Controller
 
             return response()->json($treatment);
         }catch (\Exception $e){
-            $returnData = array(
-                'status' => 'error',
-                'message' => $e->getMessage()
-            );
-            return response()->json(array_values($returnData));
+            $error=Error::getErrorAsObject($e);
+            return response()->json($error);
         }
 
 
